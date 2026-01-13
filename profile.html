@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Qasim | SQA Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary:#0f172a;
+    --accent:#38bdf8;
+    --gradient1:linear-gradient(135deg,#38bdf8,#60a5fa,#7c3aed);
+    --gradient2:linear-gradient(135deg,#fbbf24,#f97316,#ef4444);
+    --bg:#f8fafc;
+    --card:#ffffff;
+    --card-hover:#e0f2fe;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+  body{background:var(--bg);color:#334155;line-height:1.7;scroll-behavior:smooth;}
+
+  /* Navigation Bar */
+  nav{
+    position:sticky;
+    top:0;
+    width:100%;
+    background:rgba(15,23,42,0.95);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    z-index:999;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  }
+  nav .logo{
+    font-size:28px;
+    font-weight:700;
+    background:var(--gradient1);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    cursor:pointer;
+  }
+  nav ul{
+    display:flex;
+    gap:25px;
+    list-style:none;
+  }
+  nav ul li a{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+    padding:6px 12px;
+    border-radius:8px;
+    transition:0.3s;
+  }
+  nav ul li a:hover,
+  nav ul li a.active{
+    background:var(--gradient1);
+    color:white;
+    box-shadow:0 5px 15px rgba(56,189,248,0.4);
+  }
+  /* Header */
+  header{
+    min-height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    position:relative;
+    overflow:hidden;
+    padding:0 20px;
+  }
+  header::before{
+    content:'';
+    position:absolute;
+    top:0;left:0;width:100%;height:100%;
+    background:linear-gradient(-45deg,#0f172a,#020617,#0f172a,#020617);
+    background-size:400% 400%;
+    animation:gradientAnim 15s ease infinite;
+    z-index:-2;
+  }
+  header h1{
+    font-size:60px;
+    background:var(--gradient1);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:fadeDown 1s ease;
+  }
+  header p{
+    font-size:22px;
+    margin:20px auto;
+    max-width:800px;
+    color:#cbd5f5;
+    animation:fadeUp 1s ease 0.5s;
+  }
+  .header-buttons{
+    margin-top:25px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+  }
+  .header-buttons a{
+    padding:14px 30px;
+    border-radius:30px;
+    font-weight:600;
+    text-decoration:none;
+    display:inline-block;
+    transition:0.3s all;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  }
+  .header-buttons a.contact{background:var(--gradient1);color:white;}
+  .header-buttons a.contact:hover{transform:translateY(-5px) scale(1.05);box-shadow:0 12px 30px rgba(56,189,248,0.6);}
+  .header-buttons a.resume{background:transparent;border:2px solid var(--gradient1);color:var(--gradient1);}
+  .header-buttons a.resume:hover{background:var(--gradient1);color:white;transform:translateY(-5px) scale(1.05);}
+  .header-buttons a.linkedin-btn{background:#0a66c2;color:white;}
+  .header-buttons a.linkedin-btn:hover{background:#084c8d;transform:translateY(-5px) scale(1.05);box-shadow:0 10px 25px rgba(10,102,194,0.6);}
+
+  /* Sections */
+  section{padding:80px 20px;max-width:1100px;margin:auto;border-radius:16px;transition:0.3s all;}
+  section:nth-of-type(even){background:#e0f2fe;}
+  section:nth-of-type(odd){background:#fef9c3;}
+  h2{color:var(--primary);font-size:36px;margin-bottom:30px;position:relative;}
+  h2::after{content:'';width:70px;height:4px;background:var(--gradient2);position:absolute;left:0;bottom:-10px;border-radius:4px;}
+
+  .card{background:var(--card);padding:30px;border-radius:16px;box-shadow:0 15px 30px rgba(0,0,0,0.1);margin-bottom:25px;opacity:0;transform:translateY(30px);transition:0.4s all;border-left:5px solid var(--gradient1);}
+  .card.show{opacity:1;transform:translateY(0);}
+  .card:hover{transform:translateY(-8px);box-shadow:0 25px 45px rgba(0,0,0,0.2);background:#f0f9ff;}
+  .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+
+  footer{background:#020617;color:#cbd5f5;text-align:center;padding:25px;font-size:14px;}
+
+  a{color:var(--accent);text-decoration:none;}
+
+  @keyframes fadeDown{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes gradientAnim{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+</style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav>
+  <div class="logo">Muhammad Qasim</div>
+  <ul>
+    <li><a href="#about" class="active">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Header -->
+<header>
+  <div>
+    <h1>Muhammad Qasim</h1>
+    <p>Software Quality Assurance (SQA) Engineer<br>Manual & Automation Testing • Selenium • API Testing</p>
+    <div class="header-buttons">
+      <a href="#contact" class="contact">Contact Me</a>
+      <a href="resume.pdf" class="resume">Download Resume</a>
+      <a href="https://www.linkedin.com/in/muhammad-qasim-mughal-89a212390" target="_blank" class="linkedin-btn">LinkedIn</a>
+    </div>
+  </div>
+</header>
+
+<!-- About Section -->
+<section id="about">
+  <h2>About Me</h2>
+  <div class="card">I am a passionate Software Quality Assurance Engineer and Computer Science undergraduate with a strong command of manual and automation testing. I focus on delivering reliable, high-quality software by following SDLC and STLC best practices in Agile environments.</div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div class="card">Manual Testing, Smoke, Sanity, Regression</div>
+    <div class="card">Automation Testing – Selenium WebDriver</div>
+    <div class="card">API Testing – Postman</div>
+    <div class="card">Performance Testing – JMeter</div>
+    <div class="card">Test Case Design & Execution</div>
+    <div class="card">Agile, SDLC, STLC</div>
+    <div class="card">C#, SQL</div>
+    <div class="card">Jira, GitLab, Chrome DevTools</div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="card">
+    <h3>QA Practice Website Automation</h3>
+    <ul>
+      <li>Selenium automation framework using C# and MSTest</li>
+      <li>Page Object Model for scalability and maintainability</li>
+      <li>Automated authentication, cart, and checkout flows</li>
+      <li>End-to-end regression testing</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Swag Labs Manual Testing</h3>
+    <ul>
+      <li>Functional, regression, and UAT testing</li>
+      <li>Test case design and execution using Jira</li>
+      <li>Cross-browser and UI testing</li>
+      <li>Defect tracking and reporting</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Education Section -->
+<section id="education">
+  <h2>Education</h2>
+  <div class="card">
+    <p><strong>Bachelor of Science in Computer Science</strong></p>
+    <p>Muhammad Ali Jinnah University (MAJU)</p>
+    <p>GPA: 3.81 / 4.0 (2022 – 2026)</p>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="card">
+    <p>Email: <a href="mailto:qasim.mughal1258@gmail.com">qasim.mughal1258@gmail.com</a></p>
+    <p>Phone: +92 305 2715850</p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/muhammad-qasim-mughal-89a212390" target="_blank">www.linkedin.com/in/muhammad-qasim-mughal-89a212390</a></p>
+  </div>
+</section>
+
+<footer>© 2026 Muhammad Qasim | Software Quality Assurance Engineer</footer>
+
+<script>
+  // Scroll animation for cards
+  const cards = document.querySelectorAll('.card');
+  window.addEventListener('scroll', () => {
+    const triggerBottom = window.innerHeight / 5 * 4;
+    cards.forEach(card => {
+      const cardTop = card.getBoundingClientRect().top;
+      if(cardTop < triggerBottom){ card.classList.add('show'); }
+    });
+  });
+
+  // Active link highlighting
+  const sections = document.querySelectorAll('section');
+  const navLi = document.querySelectorAll('nav ul li a');
+  window.addEventListener('scroll',()=>{
+    let current='';
+    sections.forEach(section=>{
+      const sectionTop = section.offsetTop;
+      if(scrollY >= sectionTop - 60) current = section.getAttribute('id');
+    });
+    navLi.forEach(a=>{
+      a.classList.remove('active');
+      if(a.getAttribute('href') === '#' + current){
+        a.classList.add('active');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
